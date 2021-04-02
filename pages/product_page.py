@@ -30,13 +30,25 @@ class ProductPage(BasePage):
         return self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
 
     def is_added_to_busket(self, price, name):
-        assert self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE_IN_NOTIFICATION).text == price, "In busket added a product with wrong price"
-        assert self.browser.find_element(*ProductPageLocators.PRODUCT_NAME_IN_NOTIFICATION).text == name, "In busket added wrong product"
+        assert self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE_IN_NOTIFICATION).text == price, \
+            "In busket added a product with wrong price"
+        assert self.browser.find_element(*ProductPageLocators.PRODUCT_NAME_IN_NOTIFICATION).text == name, \
+            "In busket added wrong product"
 
     def go_to_busket(self):
         button = self.browser.find_element(*ProductPageLocators.PRODUCT_BUSKET_BUTTON)
         button.click()
 
     def is_correct_product_in_busket(self, price, name):
-        assert self.browser.find_element(*ProductPageLocators.PRODUCT_BUSKET_NAME).text == name, "Name in busket is not right!"
-        assert self.browser.find_element(*ProductPageLocators.PRODUCT_BUSKET_TOTAL_PRICE).text == price, "Price of product in busket is not right!"
+        assert self.browser.find_element(*ProductPageLocators.PRODUCT_BUSKET_NAME).text == name, \
+            "Name in busket is not right!"
+        assert self.browser.find_element(*ProductPageLocators.PRODUCT_BUSKET_TOTAL_PRICE).text == price, \
+            "Price of product in busket is not right!"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.PRODUCT_SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def should_not_be_success_message_after_some_time(self):
+        assert  self.is_disappeared(*ProductPageLocators.PRODUCT_SUCCESS_MESSAGE), \
+            "Success message is present, but should go away"
