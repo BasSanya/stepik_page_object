@@ -3,6 +3,8 @@ from selenium.webdriver.common.by import By
 class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+    BASKET_BTN = (By.CSS_SELECTOR, ".basket-mini .btn-group a")
+    EMPTY_BASKET_TEXT = (By.CSS_SELECTOR, "#content_inner>p")
 
 class MainPageLocators():
     LOGIN_URL = 'http://selenium1py.pythonanywhere.com/en-gb/accounts/login/'
@@ -18,7 +20,7 @@ class ProductPageLocators():
     PRODUCT_PRICE = (By.CSS_SELECTOR, '.product_main .price_color')
     PRODUCT_NAME_IN_NOTIFICATION = (By.CSS_SELECTOR, '#messages .alert-success:nth-child(1) strong')
     PRODUCT_PRICE_IN_NOTIFICATION = (By.CSS_SELECTOR, '.alert-info .alertinner strong')
-    PRODUCT_BUSKET_BUTTON = (By.CSS_SELECTOR, '.alertinner p a:first-child')
-    PRODUCT_BUSKET_NAME = (By.CSS_SELECTOR, '.basket-items h3 a')
-    PRODUCT_BUSKET_TOTAL_PRICE = (By.CSS_SELECTOR, '.table-condensed .total .price_color')
+    PRODUCT_BASKET_BUTTON = (By.CSS_SELECTOR, '.alertinner p a:first-child')
+    PRODUCT_BASKET_NAME = (By.CSS_SELECTOR, '.basket-items h3 a')
+    PRODUCT_BASKET_TOTAL_PRICE = (By.CSS_SELECTOR, '.table-condensed .total .price_color')
     PRODUCT_SUCCESS_MESSAGE = (By.CSS_SELECTOR, ".alert-success")

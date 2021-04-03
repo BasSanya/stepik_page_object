@@ -36,13 +36,13 @@ class ProductPage(BasePage):
             "In busket added wrong product"
 
     def go_to_busket(self):
-        button = self.browser.find_element(*ProductPageLocators.PRODUCT_BUSKET_BUTTON)
+        button = self.browser.find_element(*ProductPageLocators.PRODUCT_BASKET_BUTTON)
         button.click()
 
     def is_correct_product_in_busket(self, price, name):
-        assert self.browser.find_element(*ProductPageLocators.PRODUCT_BUSKET_NAME).text == name, \
+        assert self.browser.find_element(*ProductPageLocators.PRODUCT_BASKET_NAME).text == name, \
             "Name in busket is not right!"
-        assert self.browser.find_element(*ProductPageLocators.PRODUCT_BUSKET_TOTAL_PRICE).text == price, \
+        assert self.browser.find_element(*ProductPageLocators.PRODUCT_BASKET_TOTAL_PRICE).text == price, \
             "Price of product in busket is not right!"
 
     def should_not_be_success_message(self):

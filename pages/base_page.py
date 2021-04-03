@@ -43,3 +43,10 @@ class BasePage():
             return False
 
         return True
+
+    def view_basket(self):
+         btn = self.browser.find_element(*BasePageLocators.BASKET_BTN)
+         btn.click()
+
+    def is_basket_empty(self):
+        assert True if self.browser.find_element(*BasePageLocators.EMPTY_BASKET_TEXT) else False, "Buket is not empty for new guest"
