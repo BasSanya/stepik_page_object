@@ -1,7 +1,7 @@
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from ..locators import BasePageLocators
+from pages.locators import BasePageLocators
 
 class BasePage():
 
@@ -49,4 +49,9 @@ class BasePage():
          btn.click()
 
     def is_basket_empty(self):
-        assert True if self.browser.find_element(*BasePageLocators.EMPTY_BASKET_TEXT) else False, "Buket is not empty for new guest"
+        assert True if self.browser.find_element(*BasePageLocators.EMPTY_BASKET_TEXT) else False, \
+            "Buket is not empty for new guest"
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                     " probably unauthorised user"

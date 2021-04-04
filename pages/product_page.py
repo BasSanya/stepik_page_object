@@ -1,10 +1,10 @@
-from .base_page import BasePage
-from ..locators import ProductPageLocators
+from .login_page import LoginPage
+from .locators import ProductPageLocators
 from selenium.common.exceptions import NoAlertPresentException
 import math
 
 
-class ProductPage(BasePage):
+class ProductPage(LoginPage):
     def add_to_basket(self):
          add_button = self.browser.find_element(*ProductPageLocators.PRODUCT_BUTTON)
          add_button.click()
@@ -28,22 +28,6 @@ class ProductPage(BasePage):
 
     def name_value(self):
         return self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
-
-    def is_added_to_busket(self, price, name):
-        assert self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE_IN_NOTIFICATION).text == price, \
-            "In busket added a product with wrong price"
-        assert self.browser.find_element(*ProductPageLocators.PRODUCT_NAME_IN_NOTIFICATION).text == name, \
-            "In busket added wrong product"
-
-    def go_to_busket(self):
-        button = self.browser.find_element(*ProductPageLocators.PRODUCT_BASKET_BUTTON)
-        button.click()
-
-    def is_correct_product_in_busket(self, price, name):
-        assert self.browser.find_element(*ProductPageLocators.PRODUCT_BASKET_NAME).text == name, \
-            "Name in busket is not right!"
-        assert self.browser.find_element(*ProductPageLocators.PRODUCT_BASKET_TOTAL_PRICE).text == price, \
-            "Price of product in busket is not right!"
 
     def should_not_be_success_message(self):
         assert self.is_not_element_present(*ProductPageLocators.PRODUCT_SUCCESS_MESSAGE), \
